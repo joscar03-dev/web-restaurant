@@ -5,7 +5,7 @@ interface Plato {
   id: number;
   nombre: string;
   precio: number;
-  img: string;
+  imagen: string;
   descripcion: string;
 }
 
@@ -14,58 +14,22 @@ interface Plato {
   templateUrl: './lista-menu.component.html',
   styleUrls: ['./lista-menu.component.css'],
 })
-export class ListaMenuComponent {
-  platosPopulares: Plato[] = [
-    {
-      id: 1,
-      nombre: 'Plato 1',
-      precio: 100,
-      img: 'assets/img/plato1.jpg',
-      descripcion:
-        'Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
-    },
-    {
-      id: 2,
-      nombre: 'Plato 2',
-      precio: 150,
-      img: 'assets/img/plato2.jpg',
-      descripcion:
-        'Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
-    },
-    {
-      id: 3,
-      nombre: 'Plato 3',
-      precio: 200,
-      img: 'assets/img/plato3.jpg',
-      descripcion:
-        'Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
-    },
-    {
-      id: 4,
-      nombre: 'Plato 4',
-      precio: 250,
-      img: 'assets/img/plato4.jpg',
-      descripcion:
-        'Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
-    },
-    {
-      id: 5,
-      nombre: 'Plato 5',
-      precio: 300,
-      img: 'assets/img/plato5.jpg',
-      descripcion:
-        'Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
-    },
-    {
-      id: 6,
-      nombre: 'Plato 6',
-      precio: 350,
-      img: 'assets/img/plato6.jpg',
-      descripcion:
-        'Lorem Ipsum has been the industrys standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.',
-    },
-  ];
+export class ListaMenuComponent implements OnInit {
+  platosPopulares: Plato[] = [];
+
   constructor(private platoService: PlatoService) {}
+
+  ngOnInit(): void {
+    // Llamar al servicio para obtener los platos de la API
+    this.platoService.getPlatos().subscribe(
+      (data) => {
+        this.platosPopulares = data;  // Guardar los datos recibidos en la variable
+      },
+      (error) => {
+        console.error('Error al obtener los platos:', error);
+      }
+    );
+  }
 
   platos: Plato[] = [];
   platoSeleccionado: Plato | null = null;

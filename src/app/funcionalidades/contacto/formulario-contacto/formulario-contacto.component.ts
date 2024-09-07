@@ -1,26 +1,22 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-formulario-contacto',
   templateUrl: './formulario-contacto.component.html',
-  styleUrls: ['./formulario-contacto.component.css']
+  styleUrls: ['./formulario-contacto.component.css'],
 })
-export class FormularioContactoComponent {
-  nombre: string = '';
-  email: string = '';
-  mensaje: string = '';
+export class FormularioContactoComponent implements OnInit {
+  my_form: FormGroup = new FormGroup({});
 
+  ngOnInit(): void {
+    this.my_form = new FormGroup({
+      name: new FormControl('', Validators.required),
+      email: new FormControl('', [Validators.required, Validators.email]),
+      phone: new FormControl('', Validators.required),// Opcional
+    });
+  }
   enviarMensaje() {
-    if (this.nombre && this.email && this.mensaje) {
-  
-      console.log('Mensaje enviado:', { nombre: this.nombre, email: this.email, mensaje: this.mensaje });
-      alert('Mensaje enviado exitosamente');
-    
-      this.nombre = '';
-      this.email = '';
-      this.mensaje = '';
-    } else {
-      alert('Por favor, completa todos los campos');
-    }
+    console.log("Formulario enviado",this.my_form.value);
   }
 }

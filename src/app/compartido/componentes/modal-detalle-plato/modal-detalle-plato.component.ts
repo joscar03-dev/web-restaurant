@@ -4,7 +4,7 @@ interface Plato {
   nombre: string;
   precio: number;
   descripcion: string;
-  img: string;
+  imagen: string;
 }
 @Component({
   selector: 'app-modal-detalle-plato',

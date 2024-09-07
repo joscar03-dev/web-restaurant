@@ -4,7 +4,7 @@ interface Plato {
   id: number;
   nombre: string;
   precio: number;
-  img: string;
+  imagen: string;
   descripcion: string;
 }
 

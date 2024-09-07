@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { ContactoRoutingModule } from './contacto-routing.module';
 import { FormularioContactoComponent } from './formulario-contacto/formulario-contacto.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -13,7 +13,8 @@ import { FormsModule } from '@angular/forms';
   imports: [
     CommonModule,
     ContactoRoutingModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports: [
     FormularioContactoComponent

@@ -1,23 +1,39 @@
-<div
-  class="container mx-auto py-12 px-4 bg-black text-white font-bold rounded-sm"
->
-  <h1 class="text-4xl font-bold text-center mb-8">Contáctanos</h1>
+<!-- <form #miFormulario="ngForm" (ngSubmit)="enviarMensaje(miFormulario)">
+  <div class="form-control">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" ngModel required>
+  </div>
+  <div class="form-control">
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" ngModel required email>
+  </div>
+  <div class="form-control">
+    <label for="phone">Phone:</label>
+    <input type="tel" id="phone" name="phone" ngModel required>
+  </div>
+  <div class="form-control">
+    <button type="submit" [disabled]="!miFormulario.valid">Submit</button>
+  </div>
+</form>
+ -->
+<!-- 
+ <form [formGroup]="my_form" (ngSubmit)="enviarMensaje()">
+  <div class="form-control">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" formControlName="name">
+    <div *ngIf="my_form.get(name)">
 
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-    <div>
-      <h2 class="text-2xl font-semibold mb-4">Detalles de Contacto</h2>
-      <p class="mb-4">
-        <strong>Dirección:</strong> Av. Principal 123, Ciudad, País
-      </p>
-      <p class="mb-4"><strong>Teléfono:</strong> +123 456 789</p>
-      <p class="mb-4"><strong>Correo Electrónico:</strong> 'contacto.com'</p>
-    </div>
-    <div>
-      <img
-        src="assets/img/mapa.jpg"
-        alt="Mapa de Ubicación"
-        class="w-full h-64 object-cover rounded-lg shadow-lg"
-      />
     </div>
   </div>
-</div>
+  <div class="form-control">
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email">
+  </div>
+  <div class="form-control">
+    <label for="phone">Phone:</label>
+    <input type="tel" id="phone" name="phone">
+  </div>
+  <div class="form-control form-action-buttons">
+    <button type="submit" [disabled]="my_form.valid">Submit</button>
+  </div>
+</form> -->
